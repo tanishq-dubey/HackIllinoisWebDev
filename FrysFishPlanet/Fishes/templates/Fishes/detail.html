@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head lang="en">
+		<meta charset="UTF-8">
+		<title>Fry's Fish Planet</title>
+	</head>
+	<body>
+		<h1>Fry's Fish Planet</h1>
+		<h2>Here's our inventory for {{ stores.location }}:</h2>
+		<p>
+			<ul>
+				{% for Fish in stores.fish_set.all  %}
+				<li>
+					<h3>{{ Fish.name  }}</h3> {{ Fish.color }} <br>
+					<b>${{ Fish.price }}</b> <br>
+					Quantity left: {{ Fish.quantity }} <br>
+					{% if Fish.is_low_stock %}
+					<font color="red"> LOW QUANTITY BUY NOW!!!</font>
+					{% endif %}
+				</li>
+				{% endfor %}
+			</ul>
+		</p>
+	</body>
+</html>
